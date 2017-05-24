@@ -522,6 +522,13 @@ ul.none a {
     div.links {
       border-left: 1px solid #fff;
     }
+    @media screen and (max-width:767px) {
+      .first,
+      .klasse,
+      .points {
+        display: none;
+      }
+    }
   }
 
   span {

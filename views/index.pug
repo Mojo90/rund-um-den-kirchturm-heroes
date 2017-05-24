@@ -58,21 +58,21 @@ block content
           #cyclistsLastUpdated
     .container.rangliste
       .row.top(style="margin-top:20px;")
-        .col-sm-1.links
+        .col-sm-1.col-xs-2.links
           span= "Rang"
-        .col-sm-2.mitte
+        .col-sm-2.col-xs-4.mitte
           span= "Nachname"
-        .col-sm-2.mitte
+        .col-sm-2.mitte.first
           span= "Vorname"
-        .col-sm-2.mitte
+        .col-sm-2.col-xs-3.mitte
           span= "Verein"
-        .col-sm-2.mitte
+        .col-sm-2.col-xs-3.mitte
           span= "Team"
-        .col-sm-2.rechts(title="Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.")
+        .col-sm-2.rechts.klasse(title="Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.")
           span(style="width:auto; padding-right: 10px;")= "Klasse"
           a(href="#" onclick="alert('Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.');return false;")
             i.fa.fa-info-circle
-        .col-sm-1.rechts
+        .col-sm-1.rechts.points
           span= "Punkte"
       .cyclists-holder
         .col-lg-12.text-center(style="margin-top:30px;")

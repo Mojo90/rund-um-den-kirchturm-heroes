@@ -1581,25 +1581,25 @@ var showCyclists = function(cyclists, firstLoaded) {
     var classs = i % 2 == 0 ? "even" : "odd";
     $(".cyclists-holder").append("\
     <div class='row " + classs + "'>\
-      <div class='col-sm-1 links'>\
+      <div class='col-sm-1 col-xs-2 links'>\
          <span>" + (i + 1) + "</span>\
       </div>\
-      <div class='col-sm-2 mitte'>\
+      <div class='col-sm-2 col-xs-4 mitte'>\
          <a href='" + cyclistsToShow[i].href + "' target='_blank'><span>" + cyclistsToShow[i].lastname + "</span></a>\
       </div>\
-      <div class='col-sm-2 mitte'>\
+      <div class='col-sm-2 mitte first'>\
          <span>" + cyclistsToShow[i].firstname + "</span>\
       </div>\
-      <div class='col-sm-2 mitte'>\
+      <div class='col-sm-2 col-xs-3 mitte'>\
          <span>" + cyclistsToShow[i].club + "</span>\
       </div>\
-      <div class='col-sm-2 mitte'>\
+      <div class='col-sm-2 col-xs-3 mitte'>\
          <span>" + cyclistsToShow[i].team + "</span>\
       </div>\
-      <div class='col-sm-2 mitte'>\
+      <div class='col-sm-2 mitte klasse'>\
          <span>" + cyclistsToShow[i].klasse + "</span>\
       </div>\
-      <div class='col-sm-1 mitte'>\
+      <div class='col-sm-1 mitte points'>\
          <span>" + cyclistsToShow[i].points + "</span>\
       </div>\
     </div>\
