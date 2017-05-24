@@ -1,14 +1,15 @@
 var Crawler = require("simplecrawler");
 var pg = require('pg');
+var config = require('./config');
 
-var cheerio = require('cheerio')
+var cheerio = require('cheerio');
 var pool = require('./db/db');
 var cyclisters = [];
 var crawlingCountCyclists = 0;
 var alreadyCrawling = false;
 
-var fromYear = 2017;
-var toYear = 2017;
+var fromYear = parseInt(config.crawlFromYear);
+var toYear = parseInt(config.crawlToYear);
 
 var startCrawling = function(year) {
   var crawler = Crawler("https://www.rad-net.de/modules.php?name=Rangliste&saison=" + year + "&rlid=6&pg=1")
