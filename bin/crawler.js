@@ -1,4 +1,4 @@
-#! /app/.heroku/node/bin/node
+#!/usr/bin/env node
 
 var Crawler = require("simplecrawler");
 var pg = require('pg');
