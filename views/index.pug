@@ -40,7 +40,7 @@ block content
         .col-sm-2
           span(style="padding-right: 10px")= "Klasse auswählen:"
           a(href="#" onclick="alert('Es ist bei einem Fahrer gerade immer die aktuellste Klasse für alle Jahre hinterlegt.');return false;")
-            i.fa.fa-info-circle.fa-spin
+            i.fa.fa-info-circle
           select(id="select_klasse")
             option(value="alle")= "Alle"
             option(value="amateureabc")= "Amateure (A/B/C)"
@@ -50,7 +50,7 @@ block content
         .col-sm-2(title="Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.")
           span(style="padding-right: 10px")= "Renntyp auswählen:"
           a(href="#" onclick="alert('Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.');return false;")
-            i.fa.fa-info-circle.fa-spin
+            i.fa.fa-info-circle
           select(id="select_type")
             option(value="alle")= "Alle"
             option(value="deutsch")= "Deutsche Rennen"
@@ -73,7 +73,7 @@ block content
         .col-sm-2.rechts.klasse(title="Es ist bei einem Fahrer gerade immer die aktuellste Klasse für alle Jahre hinterlegt.")
           span(style="width:auto; padding-right: 10px;")= "Klasse"
           a(href="#" onclick="alert('Es ist bei einem Fahrer gerade immer die aktuellste Klasse für alle Jahre hinterlegt.');return false;")
-            i.fa.fa-info-circle.fa-spin
+            i.fa.fa-info-circle
         .col-sm-1.rechts.points
           span= "Punkte"
       .cyclists-holder
