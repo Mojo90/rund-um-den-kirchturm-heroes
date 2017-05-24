@@ -40,7 +40,7 @@ app.use(haltOnTimedout);
 }));*/
 
 //redirects to https
-/*app.use(function(req, res, next) {
+app.use(function(req, res, next) {
     var newURL;
 
     // If not on HTTPS, or not on the main domain, redirect
@@ -53,7 +53,7 @@ app.use(haltOnTimedout);
 
     return next();
 });
-app.use(haltOnTimedout);*/
+app.use(haltOnTimedout);
 
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/api'));
