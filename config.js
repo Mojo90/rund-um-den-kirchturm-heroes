@@ -1,7 +1,7 @@
 var config = {};
 
-config.defaultEnvironment = "development";
-config.defaultApiHost = "/";
+config.defaultEnvironment = "production";
+config.defaultApiHost = "rund-um-den-kirchturm-heroes.de";
 
 config.environment = process.env.environment || config.defaultEnvironment;
 config.apiHost = process.env.apiHost || config.defaultApiHost;
