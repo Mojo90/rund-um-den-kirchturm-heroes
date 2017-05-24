@@ -1,0 +1,9 @@
+doctype html
+html
+  include ./head.pug
+  body
+    include ./header.pug
+    include ./noscript.pug
+    block content
+    include ./footer.pug
+    script(rel='javscript', src='/js/main.js' async defer)

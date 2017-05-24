@@ -1,0 +1,247 @@
+.menu {
+  z-index: 99;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  margin: 0;
+
+  #menu_holder_pre {
+    display: none;
+  }
+
+  #menu_holder {
+    border-bottom: 1px solid #ddd;
+    background: $colorMenu;
+    height: 52px;
+    @include transition(all $standardAnimationTime);
+
+    .container {
+      padding-bottom: 0;
+
+      ul {
+        list-style-type: none;
+        text-align: right;
+
+        .menuitem {
+          display: inline-block;
+          text-align: center;
+          position: relative;
+          list-style-type: none;
+          height: 52px;
+          line-height: 52px;
+          vertical-align: middle;
+          @include transition(all $standardAnimationTime);
+
+          a {
+            font-family: $fontFamily;
+            font-size: $fontSizeMenu;
+            line-height: $lineHeightMenu;
+            padding: $paddingMenuItemTop $paddingMenuItemLeft;
+            display: inline-block;
+            text-transform: uppercase;
+            @include transition(all $standardAnimationTime);
+            font-weight: $fontWeightMenu;
+            color: $colorMenuItem;
+            /*text-transform: uppercase;*/
+            width: auto;
+
+            &:hover {
+              color: $colorLinkHover !important;
+              border-top: 2px;
+              border-color: #333;
+              @include transition(all $standardAnimationTime);
+            }
+
+            &.active:after,
+            &.activeMother:after {
+              content: "";
+              @include calc(width, "100% - " + (2 * $paddingMenuItemLeft));
+              height: 2px;
+              display: block;
+              position: absolute;
+              background: $colorLinkHover;
+            }
+
+            &:before {
+              top: 0;
+              content: "";
+              display: block;
+              height: 2px;
+              left: 0;
+              width: 0;
+              position: absolute;
+              background: $colorLinkHover;
+              @include transition(all $standardAnimationTime);
+            }
+
+            &:hover:before {
+              width: 100%;
+            }
+          }
+
+          .submenu {
+            border: 1px solid #ddd;
+            border-top: 0;
+            margin-top: 8px;
+            width: 100%;
+            background: $colorMenu;
+            visibility: hidden;
+            opacity: 0;
+            position: absolute;
+            z-index: 9;
+            text-align: center;
+            padding-left: 0;
+            @include transition(all $standardAnimationTime);
+
+            a {
+              font-weight: 400;
+              padding: 10px 0;
+              display: block;
+              font-size: 12px;
+              color: #8F8F8F;
+              text-decoration: none;
+              background: $colorMenu;
+              width: 100%;
+
+              &:hover {
+                color: $colorLinkHover;
+                @include transition(all $standardAnimationTime);
+              }
+
+              &.active:after {
+                content: "";
+                @include calc(width, "100% - 20px");
+                left: 10px;
+                height: 2px;
+                display: block;
+                position: absolute;
+                background: $colorLinkHover;
+              }
+
+              &:hover:before {
+                width: 0;
+              }
+            }
+          }
+
+          &:hover .submenu {
+            visibility: visible;
+            opacity: 1;
+            @include transition(all $standardAnimationTime);
+          }
+        }
+      }
+    }
+
+    .logo {
+      height: 42px;
+      width: 100%;
+      text-align: left;
+      z-index: 11;
+      top: 0;
+      position: relative;
+      @include transition(all $standardAnimationTime);
+
+      img {
+        padding-top: 10px;
+        height: 100%;
+      }
+    }
+
+    &.start {
+      height: 80px;
+      background: transparent;
+      border-bottom: 1px solid rgba(255, 255, 255, .3);
+
+      .container {
+        ul {
+          .menuitem {
+            height: 80px;
+            line-height: 80px;
+
+            a {
+              color: rgba(255, 255, 255, .7);
+            }
+
+            .submenu {
+              background: transparent;
+              border: 1px solid rgba(255, 255, 255, .3);
+              border-top: 0;
+
+              a {
+                background: rgba(0,0,0,0.5) !important;
+              }
+            }
+          }
+        }
+
+        .logo {
+          height: 70px;
+        }
+      }
+    }
+  }
+}
+
+.logo.mobile {
+  position: fixed;
+  z-index: 106;
+  display: none;
+  top: 3px;
+  max-height: 35px;
+  max-width: 35px;
+  left: 5px;
+  margin: 0;
+  text-align: center;
+}
+
+.slicknav_menu {
+  z-index: 101;
+  display: none;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid Lightgray;
+
+  .slicknav_btn {
+    @include transition(all $standardAnimationTime);
+
+    &:hover {
+      background: #E65353;
+    }
+  }
+}
+
+.slicknav_btn {
+  text-shadow: 0 !important;
+}
+@media screen and (max-width: 767px) {
+  .contact-bar.mobile a.mobile,
+  .menu {
+    display: none;
+  }
+
+  .contact-bar.mobile,
+  .logo.mobile,
+  .slicknav_menu {
+    display: block;
+  }
+}
+@media screen and (max-width: 991px) {
+  a.jobsBadge {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .menu .container .menuitem a {
+    padding-left: 13px;
+    padding-right: 13px;
+
+    &.active:after,
+    &.activeMother:after {
+      @include calc(width, "100% - 26px");
+    }
+  }
+}

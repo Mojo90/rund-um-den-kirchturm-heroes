@@ -1,0 +1,34 @@
+@import "font-awesome/scss/font-awesome-sprockets";
+@import "font-awesome/scss/font-awesome";
+@import "bootstrap/stylesheets/bootstrap-sprockets.scss";
+@import "bootstrap/stylesheets/bootstrap.scss";
+@import "lib/font-awesome-animation";
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato Hairline'), local('Lato-Hairline'), url("/fonts/lato-hairline.woff") format('woff');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Lato Light'), local('Lato-Light'), url("/fonts/lato-light.woff") format('woff');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Lato Regular'), local('Lato-Regular'), url("/fonts/lato-regular.woff") format('woff');
+}
+@font-face {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Lato Bold'), local('Lato-Bold'), url("/fonts/lato-bold.woff") format('woff');
+}
+@import "own/config";
+@import "lib/slicknav";
+@import "own/general";
+@import "own/header";
+@import "own/footer";

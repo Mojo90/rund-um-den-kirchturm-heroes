@@ -1,0 +1,75 @@
+extends layout
+
+block content
+  #headerstart.headerstart
+    .after
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2.col-md-8.col-md-offset-2.text-center
+          .inner
+            h1(class="wow slideInDown" style="font-weight:600;" data-wow-delay="0.5s")= "Die Amateur-Rangliste im Netz"
+            hr
+            p(class="wow slideInRight" data-wow-delay="0.5s")!= "Hier findet hier die Rangliste für Deutsche Rad-Amateure mit einigen Filtermöglichkeiten. Falls es Verbesserungsvorschläge gibt immer gerne direkt <a href='#footer' class='page-scroll' style='font-size: 20px; text-decoration: underline !important;'>loswerden</a>."
+            .div(style="margin-top:70px; margin-bottom:10px;" class="wow slideInUp" data-wow-delay="0.5s")
+              a.button.page-scroll(style="padding: 12px 15px;" href="#rangliste")= "Zur Rangliste"
+              a.play(target="_blank" href="https://www.leetchi.com/c/soziales-von-moritz-pfeiffer-und-rsv-oeschelbronn")
+                i.fa.fa-money
+                | SPENDEN
+  #rangliste
+    .container
+      .row
+        .col-lg-12
+          h1.text-center= "Amateur-Rangliste"
+      .row(style="margin-top:30px;")
+        .col-sm-2.col-sm-offset-2
+          | Jahr auswählen:
+          select(id="select_year")
+            option(value="2017")= "2017"
+            option(value="2016")= "2016"
+            option(value="2015")= "2015"
+            option(value="2014")= "2014"
+            option(value="2013")= "2013"
+            option(value="2012")= "2012"
+            option(value="2011")= "2011"
+            option(value="2010")= "2010"
+            option(value="2009")= "2009"
+            option(value="2008")= "2008"
+            option(value="2007")= "2007"
+            option(value="2006")= "2006"
+            option(value="2005")= "2005"
+        .col-sm-2
+          | Klasse auswählen:
+          select(id="select_klasse")
+            option(value="alle")= "Alle"
+            option(value="amateureabc")= "Amateure (A/B/C)"
+            option(value="amateurektabc")= "Amateure (KT/A/B/C)"
+            option(value="prosptpkt")= "Profis (PT/PKT)"
+            option(value="prosptpktkt")= "Profis (PT/PKT/KT)"
+        .col-sm-2
+          | Renntyp auswählen:
+          select(id="select_type")
+            option(value="alle")= "Alle"
+            option(value="deutsch")= "Deutsche Rennen"
+            option(value="international")= "Internationale Rennen"
+        .col-sm-2
+          | Zuletzt aktualisiert:
+          #cyclistsLastUpdated
+    .container.rangliste
+      .row.top(style="margin-top:20px;")
+        .col-sm-1.links
+          span= "Rang"
+        .col-sm-2.mitte
+          span= "Nachname"
+        .col-sm-2.mitte
+          span= "Vorname"
+        .col-sm-2.mitte
+          span= "Verein"
+        .col-sm-2.mitte
+          span= "Team"
+        .col-sm-2.rechts
+          span= "Klasse"
+        .col-sm-1.rechts
+          span= "Punkte"
+      .cyclists-holder
+        .col-lg-12.text-center(style="margin-top:30px;")
+          i.fa.fa-spinner.fa-spin.fa-3x
