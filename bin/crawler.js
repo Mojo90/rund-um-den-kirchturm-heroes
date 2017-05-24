@@ -1,3 +1,5 @@
+#! /app/.heroku/node/bin/node
+
 var Crawler = require("simplecrawler");
 var pg = require('pg');
 var config = require('../config');
