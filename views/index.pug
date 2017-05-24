@@ -45,8 +45,10 @@ block content
             option(value="amateurektabc")= "Amateure (KT/A/B/C)"
             option(value="prosptpkt")= "Profis (PT/PKT)"
             option(value="prosptpktkt")= "Profis (PT/PKT/KT)"
-        .col-sm-2
-          | Renntyp auswählen:
+        .col-sm-2(title="Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.")
+          span(style="padding-right: 10px")= "Renntyp auswählen:"
+          a(href="#" onclick="alert('Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.');return false;")
+            i.fa.fa-info-circle
           select(id="select_type")
             option(value="alle")= "Alle"
             option(value="deutsch")= "Deutsche Rennen"
@@ -66,8 +68,10 @@ block content
           span= "Verein"
         .col-sm-2.mitte
           span= "Team"
-        .col-sm-2.rechts
-          span= "Klasse"
+        .col-sm-2.rechts(title="Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.")
+          span(style="width:auto; padding-right: 10px;")= "Klasse"
+          a(href="#" onclick="alert('Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.');return false;")
+            i.fa.fa-info-circle
         .col-sm-1.rechts
           span= "Punkte"
       .cyclists-holder

@@ -31,7 +31,7 @@ var showCyclists = function(cyclists, firstLoaded) {
       var results = JSON.parse(cyclists[i].results);
       var points = 0;
       for (var y = 0; y < results.length; y++) {
-        if (typen_filter.length == 0 || typen_filter.indexOf(results[y].kategorie.split(".")[0]) > -1) {
+        if (typen_filter.length == 0 || typen_filter.indexOf(results[y].kategorie.split(".")[0]) > -1 || typen_filter[0] == results[y].kategorie) {
           points += parseInt(results[y].points) || 0;
         }
         if ($.inArray(results[y].kategorie, event_classes) == -1 && results[y].kategorie.length > 0) event_classes.push(results[y].kategorie);
