@@ -60,7 +60,7 @@ var showCyclists = function(cyclists, firstLoaded) {
          <span>" + (i + 1) + "</span>\
       </div>\
       <div class='col-sm-2 col-xs-4 mitte'>\
-         <a href='" + cyclistsToShow[i].href + "' target='_blank'><span>" + cyclistsToShow[i].lastname + "</span></a>\
+         <a href=" + cyclistsToShow[i].href + " target='_blank'><span style='text-decoration: underline;'>" + cyclistsToShow[i].lastname + "</span></a>\
       </div>\
       <div class='col-sm-2 mitte first'>\
          <span>" + cyclistsToShow[i].firstname + "</span>\
