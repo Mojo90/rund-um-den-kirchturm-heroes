@@ -1,15 +1,17 @@
 var Crawler = require("simplecrawler");
 var pg = require('pg');
-var config = require('./config');
+var config = require('../config');
 
 var cheerio = require('cheerio');
-var pool = require('./db/db');
+var pool = require('../db/db');
 var cyclisters = [];
 var crawlingCountCyclists = 0;
 var alreadyCrawling = false;
 
 var fromYear = parseInt(config.crawlFromYear);
 var toYear = parseInt(config.crawlToYear);
+var maxDurchlaeufe = 0;
+var bisherigeDurchlaeufe = 0;
 
 var startCrawling = function(year) {
   var crawler = Crawler("https://www.rad-net.de/modules.php?name=Rangliste&saison=" + year + "&rlid=6&pg=1")
@@ -183,7 +185,7 @@ var getKlasse = function(text, year) {
 
 var saveData = function(cyclists, year) {
   console.log("Start saving");
-  var con = new pg.Client(require('./db/db'));
+  var con = new pg.Client(require('../db/db'));
   con.connect();
   var query = con.query("drop table if exists cyclists_" + year);
   query.on('end', function() {
@@ -199,9 +201,19 @@ var saveData = function(cyclists, year) {
   }).pop().on('end', function() {
     console.log("Inserted " + cyclists.length + " cyclists in year " + year + ".");
     con.end();
+    bisherigeDurchlaeufe++;
+    if (maxDurchlaeufe == bisherigeDurchlaeufe) {
+      console.log("Crawled everything what needed.");
+      finishProcess();
+    }
   });
 };
 
+var finishProcess = function() {
+  process.exit();
+}
+
 for (var i = fromYear; i <= toYear; i++) {
+  maxDurchlaeufe++;
   startCrawling(i);
 }
