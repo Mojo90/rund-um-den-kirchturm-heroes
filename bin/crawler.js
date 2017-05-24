@@ -213,7 +213,11 @@ var finishProcess = function() {
   process.exit();
 }
 
-for (var i = fromYear; i <= toYear; i++) {
-  maxDurchlaeufe++;
-  startCrawling(i);
+var crawler = function() {
+  for (var i = fromYear; i <= toYear; i++) {
+    maxDurchlaeufe++;
+    startCrawling(i);
+  }
 }
+
+crawler();
