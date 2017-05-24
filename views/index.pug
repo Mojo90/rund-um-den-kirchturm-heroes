@@ -38,7 +38,9 @@ block content
             option(value="2006")= "2006"
             option(value="2005")= "2005"
         .col-sm-2
-          | Klasse auswählen:
+          span(style="padding-right: 10px")= "Klasse auswählen:"
+          a(href="#" onclick="alert('Es ist gerade immer die aktuellste Klasse bei einem Fahrer für alle Jahre hinterlegt.');return false;")
+            i.fa.fa-info-circle
           select(id="select_klasse")
             option(value="alle")= "Alle"
             option(value="amateureabc")= "Amateure (A/B/C)"
@@ -68,9 +70,9 @@ block content
           span= "Verein"
         .col-sm-2.col-xs-3.mitte
           span= "Team"
-        .col-sm-2.rechts.klasse(title="Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.")
+        .col-sm-2.rechts.klasse(title="Es ist gerade immer die aktuellste Klasse bei einem Fahrer für alle Jahre hinterlegt.")
           span(style="width:auto; padding-right: 10px;")= "Klasse"
-          a(href="#" onclick="alert('Bei Profis sollte die Klasse in jedem Jahr stimmen. Bei Amateuren ist bei allen Jahren die Klasse aus dem aktuellen Jahr (" + year + ") vermerkt.');return false;")
+          a(href="#" onclick="alert('Es ist gerade immer die aktuellste Klasse bei einem Fahrer für alle Jahre hinterlegt.');return false;")
             i.fa.fa-info-circle
         .col-sm-1.rechts.points
           span= "Punkte"
