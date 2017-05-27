@@ -21,7 +21,15 @@ block content
         .col-lg-12
           h1.text-center= "Amateur-Rangliste"
       .row(style="margin-top:30px;")
-        .col-sm-2.col-sm-offset-2
+        .col-sm-2
+          span(style="")= "Kategorie auswählen:"
+          a(href="#" onclick="alert('Die ewige Bestenliste addiert über alle Jahre (ab 2005) alle Punkte auf für jeden Fahrer. Fahrer werden nach Vor- und Nachname zusammengefasst, Team und Verein kann irgendeiner seit 2015 angezeigt werden. @Ändyman: Bei den deutschen Rennen bist du wohl der Allstar Hero ;)!');return false;")
+            i.fa.fa-info-circle
+          select(id="select_category")
+            option(value="male")= "Männer"
+            option(value="team")= "Team"
+            option(value="ewige")= "Ewige Bestenliste"
+        .col-sm-2
           | Jahr auswählen:
           select(id="select_year")
             option(value="2017")= "2017"
@@ -38,7 +46,7 @@ block content
             option(value="2006")= "2006"
             option(value="2005")= "2005"
         .col-sm-2
-          span(style="padding-right: 10px")= "Klasse auswählen:"
+          span(style="")= "Klasse auswählen:"
           a(href="#" onclick="alert('Es ist bei einem Fahrer gerade immer die aktuellste Klasse für alle Jahre hinterlegt.');return false;")
             i.fa.fa-info-circle
           select(id="select_klasse")
@@ -48,7 +56,7 @@ block content
             option(value="prosptpkt")= "Profis (PT/PKT)"
             option(value="prosptpktkt")= "Profis (PT/PKT/KT)"
         .col-sm-2(title="Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.")
-          span(style="padding-right: 10px")= "Renntyp auswählen:"
+          span(style="")= "Renntyp auswählen:"
           a(href="#" onclick="alert('Deutsche Rennen sind Kategorie 3 - 7. Internationale Rennen alle anderen Kategorien.');return false;")
             i.fa.fa-info-circle
           select(id="select_type")

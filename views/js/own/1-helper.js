@@ -57,3 +57,21 @@ var uniqueA = function(arr) {
   }
   return out;
 };
+
+var uniqueAFirstLast = function(arr) {
+  var sl = arr;
+  var out = [];
+
+  for (var i = 0, l = sl.length; i < l; i++) {
+    var unique = true;
+    for (var j = 0, k = out.length; j < k; j++) {
+      if ((sl[i].firstname === out[j].firstname) && (sl[i].lastname === out[j].lastname)) {
+        unique = false;
+      }
+    }
+    if (unique) {
+      out.push(sl[i]);
+    }
+  }
+  return out;
+};
