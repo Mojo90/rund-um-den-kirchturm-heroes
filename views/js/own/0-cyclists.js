@@ -22,6 +22,7 @@ var loadCyclists = function(year) {
     }
   }, function(error) {
     console.log(error);
+    showError("Es ist ein Fehler aufgetreten. Am Besten die Seite noch einmal neu laden. Falls der Fehler häufiger auftritt bitte mich kontaktieren.");
   });
 };
 
@@ -67,8 +68,7 @@ var loadEwige = function() {
         console.log(error);
         loading = false;
 
-        console.log("Error Loaded: " + loaded + ". Should load: " + co);
-
+        showError("Es ist ein Fehler aufgetreten. Am Besten die Seite noch einmal neu laden. Falls der Fehler häufiger auftritt bitte mich kontaktieren.");
 
         if (loaded == co) {
           cyclisters = ewigeCyclists;

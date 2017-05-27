@@ -75,3 +75,7 @@ var uniqueAFirstLast = function(arr) {
   }
   return out;
 };
+
+var showError = function(text) {
+  alert(text);
+};
