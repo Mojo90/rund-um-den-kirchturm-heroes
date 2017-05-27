@@ -226,7 +226,9 @@ var showTeams = function(cyclists, firstLoaded) {
   var teamsVereine = [];
   for (var i = 0; i < cyclistsToShow.length; i++) {
     if ($.inArray(cyclistsToShow[i].club, teamsVereine) == -1 && cyclistsToShow[i].club.length > 0) teamsVereine.push(cyclistsToShow[i].club);
-    if ($.inArray(cyclistsToShow[i].team, teamsVereine) == -1 && cyclistsToShow[i].team.length > 0) teamsVereine.push(cyclistsToShow[i].team);
+
+    // Herrmann Radteam club and team is equal thus only count club
+    if ($.inArray(cyclistsToShow[i].team, teamsVereine) == -1 && cyclistsToShow[i].team.length > 0 && cyclistsToShow[i].team != "Herrmann Radteam") teamsVereine.push(cyclistsToShow[i].team);
   }
 
   var teamsVereineToShow = [];
