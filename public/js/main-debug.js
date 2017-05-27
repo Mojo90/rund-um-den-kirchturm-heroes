@@ -1751,9 +1751,7 @@ var showTeams = function(cyclists, firstLoaded) {
   var teamsVereine = [];
   for (var i = 0; i < cyclistsToShow.length; i++) {
     if ($.inArray(cyclistsToShow[i].club, teamsVereine) == -1 && cyclistsToShow[i].club.length > 0) teamsVereine.push(cyclistsToShow[i].club);
-
-    // Herrmann Radteam club and team is equal thus only count club
-    if ($.inArray(cyclistsToShow[i].team, teamsVereine) == -1 && cyclistsToShow[i].team.length > 0 && cyclistsToShow[i].team != "Herrmann Radteam") teamsVereine.push(cyclistsToShow[i].team);
+    if ($.inArray(cyclistsToShow[i].team, teamsVereine) == -1 && cyclistsToShow[i].team.length > 0) teamsVereine.push(cyclistsToShow[i].team);
   }
 
   var teamsVereineToShow = [];
@@ -1769,7 +1767,8 @@ var showTeams = function(cyclists, firstLoaded) {
         team.cyclists++;
       }
 
-      if (cyclistsToShow[z].team == teamsVereine[i]) {
+      // Herrmann Radteam club and team is equal thus only count club
+      if (cyclistsToShow[z].team == teamsVereine[i] && cyclistsToShow[z].team != "Herrmann Radteam") {
         team.points += cyclistsToShow[z].points;
         team.cyclists++;
       }
