@@ -40,7 +40,7 @@ app.use(haltOnTimedout);
 }));*/
 
 //redirects to https
-app.use(function(req, res, next) {
+/*app.use(function(req, res, next) {
     var newURL;
 
     // If not on HTTPS, or not on the main domain, redirect
@@ -51,12 +51,12 @@ app.use(function(req, res, next) {
           will not force https as we are now on free heroku dyno
           newURL = ['https://' + config.apiHost, req.url].join('');
 
-        */
+
         return res.redirect(newURL);
     }
 
     return next();
-});
+});*/
 app.use(haltOnTimedout);
 
 app.use('/', require('./routes/index'));
