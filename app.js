@@ -47,7 +47,11 @@ app.use(function(req, res, next) {
     if (config.environment === 'production' &&
         (req.headers['x-forwarded-proto'] !== 'https' || req.headers.host !== config.apiHost)) {
 
-        newURL = ['https://' + config.apiHost, req.url].join('');
+        /*
+          will not force https as we are now on free heroku dyno
+          newURL = ['https://' + config.apiHost, req.url].join('');
+
+        */
         return res.redirect(newURL);
     }
 
