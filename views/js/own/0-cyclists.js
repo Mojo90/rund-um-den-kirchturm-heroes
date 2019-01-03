@@ -88,7 +88,7 @@ var loadEwige = function() {
     }, 100);
   };
 
-  for (var i = 2005; i <= 2017; i++) {
+  for (var i = 2005; i <= currentYearToHandle; i++) {
     co++;
     timeoutYear(i, co);
   }

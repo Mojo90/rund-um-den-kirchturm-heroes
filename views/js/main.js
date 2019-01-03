@@ -1,3 +1,5 @@
+var currentYearToHandle = 2019
+
 var init = function() {
   // jQuery for page scrolling feature - requires jQuery Easing plugin
   $('a.page-scroll').bind('click', function(event) {
@@ -15,7 +17,7 @@ var init = function() {
 
   handleMobileMenu();
 
-  loadCyclists("2019");
+  loadCyclists(currentYearToHandle + "");
 
   new WOW().init();
 };
