@@ -2119,7 +2119,7 @@ var init = function() {
 
   handleMobileMenu();
 
-  loadCyclists("2018");
+  loadCyclists("2019");
 
   new WOW().init();
 };
