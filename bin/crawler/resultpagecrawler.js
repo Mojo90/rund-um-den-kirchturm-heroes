@@ -90,7 +90,7 @@ var checkFinish = function(resolve, amount) {
 var doTimeout = function(count, href, year)  {
   setTimeout(function() {
     crawlResultPage(count, href, year);
-  }, count * 250);
+  }, count * 1000);
 }
 
 async function start(cyclisters, year) {
