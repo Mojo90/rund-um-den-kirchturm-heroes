@@ -1,6 +1,10 @@
-var Crawler = require("simplecrawler");
+var Crawler = require("crawler");
 
-var cheerio = require('cheerio');
+var cyclisters = [];
+var crawlResults = 0;
+var year = 0;
+
+/*var cheerio = require('cheerio');
 
 var crawlCyclist = function(count, url, year) {
   url = "https://rad-net.de" + url;
@@ -143,7 +147,7 @@ var crawlCyclist = function(count, url, year) {
     cyclistcrawler.start();
     if (count % 200 == 0) console.log(count + " cyclists already crawled");
   }, count * 300);
-};
+};*/
 
 var getKlasse = function(text, year) {
   var klasse = "";
@@ -155,13 +159,111 @@ var getKlasse = function(text, year) {
   return klasse;
 };
 
-var start = function(year) {
-  var newPromise = new Promise(function(resolve, reject) {
-    crawlCyclist("https://www.rad-net.de/modules.php?name=Rangliste&saison=" + year + "&rlid=6&pg=1", year, resolve, reject);
-  });
-  return newPromise;
-};
+var c = new Crawler({
+  rateLimit: 2000,
+  maxConnections: 1,
+  // This will be called for each crawled page
+  callback: function(error, res, done) {
+    if (error) {
+      console.log(error);
+    } else {
+      var $ = res.$;
+      var rows = $("tr[bgcolor='#000066']").parent();
+      var breakForKlasse = false;
+      $(rows).each(function() {
+        $(this).find('tr').each(function(i, el) {
+          $(this).find('td').each(function(i, el) {
+            if (breakForKlasse && (cyclisters[crawlResults].klasse || "").length == 0) {
+              var klasse = $(this).text();
+              cyclisters[crawlResults].klasse = klasse;
+            }
+            if ($(this).text().indexOf("Klasse") > -1) {
+              breakForKlasse = true;
+            }
+          });
+        });
+      });
 
+      if (!cyclisters[crawlResults].klasse) {
+        $(rows).each(function() {
+          $(this).find('tr').each(function(i, el) {
+            $(this).find('td').each(function(i, el) {
+              if (breakForKlasse && (cyclisters[crawlResults].klasse || "").length == 0) {
+                var klasse = getKlasse($(this).text(), year);
+                cyclisters[crawlResults].klasse = klasse;
+              }
+              if ($(this).text().indexOf("Teams") > -1) {
+                breakForKlasse = true;
+              }
+            });
+          });
+        });
+      }
+
+      //console.log("Klasse: " + cyclisters[count].klasse);
+      cyclisters[crawlResults].results = [];
+      var rows = $("tr[bgcolor='#E9E9E9']").parent();
+      $(rows).each(function() {
+        $(this).find('tr').each(function(i, el) {
+          var event = {};
+          $(this).find('td').each(function(i, el) {
+            if (i == 0) {
+              event.date = $(this).text();
+            }
+            if (i == 1) {
+              event.city = $(this).text();
+            }
+            if (i == 2) {
+              event.name = $(this).text();
+            }
+            if (i == 3) {
+              event.place = $(this).text();
+            }
+            if (i == 4) {
+              event.kategorie = $(this).text();
+            }
+            if (i == 5) {
+              event.type = $(this).text();
+            }
+            if (i == 6) {
+              event.points = $(this).text();
+            }
+          });
+          if (event.date.indexOf("Datum") == -1) cyclisters[crawlResults].results.push(event);
+        });
+      });
+
+      crawlResults++;
+      if (crawlResults % 50 == 0) console.log(crawlResults + " page results from cyclists in " + year + " already crawled");
+    }
+    done();
+  }
+});
+
+var checkFinish = function(resolve, amount) {
+  console.log(crawlResults + " / " + amount);
+  if (crawlResults == amount) {
+    resolve(cyclisters);
+  } else  {
+    setTimeout(function() {
+      checkFinish(resolve, amount);
+    }, 30000);
+  }
+}
+
+async function start(result, cy, y) {
+  return new Promise(async (resolve, reject) => {
+    year = y;
+    cyclisters = cy;
+    var a = [];
+    for (var i = 0; i < result.length; i++) {
+      a.push(result[i].href);
+    }
+    // Queue a list of URLs
+    c.queue(a);
+    checkFinish(resolve, result.length);
+  });
+}
 module.exports = {
   start: start
 };

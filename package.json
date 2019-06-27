@@ -12,6 +12,7 @@
     "co": "^4.6.0",
     "compression": "^1.7.3",
     "connect-timeout": "^1.8.0",
+    "crawler": "^1.2.1",
     "debug": "~2.6.9",
     "express": "^4.16.4",
     "gulp": "^3.9.1",

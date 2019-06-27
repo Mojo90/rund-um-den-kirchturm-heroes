@@ -6,14 +6,18 @@ var toYear = parseInt(config.crawlToYear);
 
 var pageCrawlerResult;
 var resultPageCrawlerResult;
+var resultCrawlerResult;
 
 async function start(){
   for(var i = fromYear; i <= toYear; i++){
     var year = i;
     console.log("Start crawling " + year + " year.");
+
     var pageCrawler = require('./pagecrawler.js');
     var resultPageCrawler = require('./resultpagecrawler.js');
     var resultCrawler = require('./resultcrawler.js');
+    var saveToDB = require('./saveToDB.js');
+
     await pageCrawler.start(year).then(function(result){
         console.log("Crawled " + result.length + " cyclists for year " + year);
         pageCrawlerResult = result;
@@ -22,15 +26,18 @@ async function start(){
     .then(function(result){
         console.log("Crawled " + result.length + " result pages for year " + year);
         resultPageCrawlerResult = result;
-        console.dir(result);
-        return resultCrawler.start(result, year);
+        return resultCrawler.start(result, pageCrawlerResult, year);
     })
     .then(function(result){
         console.log("Crawled " + result.length + " results for year " + year);
-        console.dir(result);
+        resultCrawlerResult = result;
+        return saveToDB.start(result, year);
     });
+    
     console.log("Finished crawling " + year + " year.");
   }
+  console.log("Complete crawling finished - uff ;)...");
+  process.exit();
 }
 
 start();
