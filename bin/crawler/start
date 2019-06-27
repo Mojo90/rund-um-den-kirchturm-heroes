@@ -1,0 +1,36 @@
+#!/app/.heroku/node/bin/node
+
+var config = require('../../config');
+var fromYear = parseInt(config.crawlFromYear);
+var toYear = parseInt(config.crawlToYear);
+
+var pageCrawlerResult;
+var resultPageCrawlerResult;
+
+async function start(){
+  for(var i = fromYear; i <= toYear; i++){
+    var year = i;
+    console.log("Start crawling " + year + " year.");
+    var pageCrawler = require('./pagecrawler.js');
+    var resultPageCrawler = require('./resultpagecrawler.js');
+    var resultCrawler = require('./resultcrawler.js');
+    await pageCrawler.start(year).then(function(result){
+        console.log("Crawled " + result.length + " cyclists for year " + year);
+        pageCrawlerResult = result;
+        return resultPageCrawler.start(result, year);
+    })
+    .then(function(result){
+        console.log("Crawled " + result.length + " result pages for year " + year);
+        resultPageCrawlerResult = result;
+        console.dir(result);
+        return resultCrawler.start(result, year);
+    })
+    .then(function(result){
+        console.log("Crawled " + result.length + " results for year " + year);
+        console.dir(result);
+    });
+    console.log("Finished crawling " + year + " year.");
+  }
+}
+
+start();

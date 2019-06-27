@@ -15,12 +15,14 @@
     "debug": "~2.2.0",
     "express": "^4.16.4",
     "gulp": "^3.9.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
     "morgan": "^1.8.1",
     "pg": "^6.2.2",
     "pg-pool": "^1.7.1",
     "pug": "^2.0.0-rc.1",
     "request": "^2.75.0",
-    "simplecrawler": "^1.1.2",
+    "simplecrawler": "^1.1.8",
     "slack-node": "^0.1.8"
   },
   "devDependencies": {
