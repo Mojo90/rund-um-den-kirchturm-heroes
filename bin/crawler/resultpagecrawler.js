@@ -3,9 +3,9 @@ var cheerio = require('cheerio');
 var linkResultsA = [];
 var crawlResults = 0;
 
-var crawlResultPage = function(count, url, year)  {
+var crawlResultPage = function(urls, year)  {
   //console.log(count + ": " + url);
-  var resultpagecralwer = Crawler(url)
+  var resultpagecralwer = Crawler(urls[0].href)
     .on("fetchcomplete", function(queueItem, responseBuffer, response) {
       //console.log(count + ": It was a resource of type %s", response.headers['content-type'] + ". Url: " + url);
 
@@ -35,9 +35,10 @@ var crawlResultPage = function(count, url, year)  {
         });
       });
       crawlResults++;
+      if (crawlResults % 50 == 0) console.log(crawlResults + " page results from cyclists in " + year + " already crawled");
     })
-    .on("complete", function() {
-      if (count % 50 == 0) console.log(count + " page results from cyclists in " + year + " already crawled");
+    .on("complete", function(){
+      console.log("Sollte fertsch sein");
     })
     .on("fetchclienterror", function(queueItem, error) {
       console.error("Error: " + error);
@@ -73,6 +74,9 @@ var crawlResultPage = function(count, url, year)  {
 
   resultpagecralwer.decodeResponses = true;
   resultpagecralwer.maxDepth = 1;
+  for (var i = 1; i < urls.length; i++) {
+    resultpagecralwer.queueURL(urls[i].href);
+  }
   resultpagecralwer.start();
 };
 
@@ -83,22 +87,13 @@ var checkFinish = function(resolve, amount) {
   } else  {
     setTimeout(function() {
       checkFinish(resolve, amount);
-    }, 500);
+    }, 2000);
   }
-}
-
-var doTimeout = function(count, href, year)  {
-  setTimeout(function() {
-    crawlResultPage(count, href, year);
-  }, count * 1000);
 }
 
 async function start(cyclisters, year) {
   return new Promise(async (resolve, reject) => {
-    for (var i = 0; i < cyclisters.length; i++) {
-      //console.log("Crawling " + cyclisters[i].href);
-      doTimeout(i, cyclisters[i].href, year);
-    }
+    crawlResultPage(cyclisters, year);
     checkFinish(resolve, cyclisters.length - 1);
   });
 }
