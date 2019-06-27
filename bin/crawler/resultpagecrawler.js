@@ -77,6 +77,7 @@ var crawlResultPage = function(count, url, year)  {
 };
 
 var checkFinish = function(resolve, amount) {
+  console.log(crawlResults + " / " + amount);
   if (crawlResults == amount) {
     resolve(linkResultsA);
   } else  {
@@ -89,7 +90,7 @@ var checkFinish = function(resolve, amount) {
 var doTimeout = function(count, href, year)  {
   setTimeout(function() {
     crawlResultPage(count, href, year);
-  }, count * 1000);
+  }, count * 250);
 }
 
 async function start(cyclisters, year) {
