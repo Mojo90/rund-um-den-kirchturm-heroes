@@ -24,7 +24,7 @@ var saveData = function(cyclists, year) {
 
 var start = function(cyclists, year) {
   var newPromise = new Promise(function(resolve, reject) {
-    saveData("cyclists, year, resolve, reject);
+    saveData(cyclists, year, resolve, reject);
   });
   return newPromise;
 };
