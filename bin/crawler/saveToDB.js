@@ -1,6 +1,6 @@
 var pg = require('pg');
 
-var saveData = function(cyclists, year) {
+var saveData = function(cyclists, year, resolve, reject) {
   console.log("Start saving");
   var con = new pg.Client(require('../../db/db'));
   con.connect();
