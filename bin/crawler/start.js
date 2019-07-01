@@ -2,10 +2,6 @@ var config = require('../../config');
 var fromYear = parseInt(config.crawlFromYear);
 var toYear = parseInt(config.crawlToYear);
 
-var pageCrawlerResult;
-var resultPageCrawlerResult;
-var resultCrawlerResult;
-
 async function start() {
   for (var i = fromYear; i <= toYear; i++) {
     var year = i;
@@ -15,6 +11,8 @@ async function start() {
     var resultPageCrawler = require('./resultpagecrawler.js');
     var resultCrawler = require('./resultcrawler.js');
     var saveToDB = require('./saveToDB.js');
+
+    var pageCrawlerResult;
 
     await pageCrawler.start(year).then(function(result) {
         console.log("Crawled " + result.length + " cyclists for year " + year);
@@ -27,12 +25,10 @@ async function start() {
       })
       .then(function(result) {
         console.log("Crawled " + result.length + " result pages for year " + year);
-        resultPageCrawlerResult = result;
         return resultCrawler.start(result, pageCrawlerResult, year);
       })
       .then(function(result) {
         console.log("Crawled " + result.length + " results for year " + year);
-        resultCrawlerResult = result;
         return saveToDB.start(result, year);
       });
 
