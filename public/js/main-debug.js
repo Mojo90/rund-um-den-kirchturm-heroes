@@ -2102,7 +2102,7 @@ $(window).scroll(function() {
   }
 });
 
-var currentYearToHandle = 2019
+var currentYearToHandle = 2020
 
 var init = function() {
   // jQuery for page scrolling feature - requires jQuery Easing plugin

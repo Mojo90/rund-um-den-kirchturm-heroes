@@ -2,6 +2,9 @@
   "name": "rund-umd-kirch-heroes",
   "author": "DevelApp by Moritz Pfeiffer",
   "version": "0.1.1",
+  "engines": {
+    "node": "10.8.0"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "gulp": "gulp"
@@ -12,15 +15,18 @@
     "co": "^4.6.0",
     "compression": "^1.7.3",
     "connect-timeout": "^1.8.0",
-    "debug": "~2.2.0",
+    "crawler": "^1.2.1",
+    "debug": "~2.6.9",
     "express": "^4.16.4",
     "gulp": "^3.9.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
     "morgan": "^1.8.1",
     "pg": "^6.2.2",
     "pg-pool": "^1.7.1",
     "pug": "^2.0.0-rc.1",
     "request": "^2.75.0",
-    "simplecrawler": "^1.1.2",
+    "simplecrawler": "^1.1.8",
     "slack-node": "^0.1.8"
   },
   "devDependencies": {
