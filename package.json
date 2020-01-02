@@ -2,6 +2,9 @@
   "name": "rund-umd-kirch-heroes",
   "author": "DevelApp by Moritz Pfeiffer",
   "version": "0.1.1",
+  "engines": {
+    "node": "10.8.0"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "gulp": "gulp"
